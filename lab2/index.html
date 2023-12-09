@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автомобілі</title>
+</head>
+<body>
+    <form action="cgi-bin/process_form.py" method="post">
+        <label for="brand">Оберіть вашу улюблену марку автомобіля:</label>
+        <select name="brand" id="brand">
+            <option value="toyota">Toyota</option>
+            <option value="honda">Honda</option>
+            <option value="bmw">BMW</option>
+        </select>
+
+        <br>
+
+        <label for="type">Виберіть тип авто:</label>
+        <input type="radio" name="type" value="sedan"> Седан
+        <input type="radio" name="type" value="suv"> Позашляховик
+        <input type="radio" name="type" value="hatchback"> Хетчбек
+
+        <br>
+
+        <label for="favorite_model">Ваш улюблений модель авто:</label>
+        <input type="text" name="favorite_model" id="favorite_model">
+
+        <br>
+
+        <label for="subscribe_news">Підписатися на новини:</label>
+        <select name="subscribe_news" id="subscribe_news">
+            <option value="yes">Так</option>
+            <option value="no">Ні</option>
+        </select>
+
+        <br>
+
+        <input type="submit" value="Надіслати">
+    </form>
+
+    <!-- Форма для видалення cookies -->
+    <form action="cgi-bin/delete_cookies.py" method="post">
+        <input type="hidden" name="delete_cookies" value="true">
+        <input type="submit" value="Видалити Cookies">
+    </form>
+</body>
+</html>

@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Login {% endblock %}
+
+{% block content%}
+
+  <div class="container">
+    <div class="row justify-content-center">
+      <h2 class="text-center mb-4">Авторизація</h2>
+    <form action="{{ url_for('login') }}" method="POST" novalidate>
+    {{ form.csrf_token }}
+    {% from 'macros.html' import render_field %}
+    {{ render_field(form.username) }}
+    {{ render_field(form.password) }}
+    <div>
+      {{ form.remember() }} {{ form.remember.label }}
+    </div>
+    <div>
+      {{ form.submit() }}
+    </div>
+  </form>
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% block head %}
+<title>{{ title }}</title>
+{% endblock %} {% extends "base.html" %} {% block content %}
+<div class="skills-section">
+  <div class="container">
+    <h2>{{ current_user.username }}</h2>
+  </div>
+</div>
+{% endblock %}

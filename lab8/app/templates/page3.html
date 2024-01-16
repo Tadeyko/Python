@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Сторінка 3{% endblock %}
+
+{% block body %}
+<div class="container">
+<h2>Сторінка 3</h2>
+    <p>Зараз я є студентом Прикарпатського Національного Університету ім.Василя Стефаника, навчаюсь на факультеті математики та інформатики на спеціальності: інженерія програмного забезпечення. Також займаю посаду сенатора свого факультету.</p>
+   <div style="text-align: center;">
+        <img src="/static/images/image3.jpg" alt="Зображення 3" style="width: 600px; height: auto;">
+        <h4><a href="{{ url_for('about') }}">Повернутися до біографії</a></h4>
+   </div>
+</div>
+
+{% endblock %}

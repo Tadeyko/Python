@@ -1,0 +1,70 @@
+{% block head %}
+<title>{{ title }}</title>
+{% endblock %} {% extends "base.html" %} {% block content %}
+<div class="container">
+  <div class="content-section">
+    <div>
+      <img
+        src="{{ image_file }}"
+        alt="user image"
+        class="rounded-circle account-img"
+        style="width: 100px; height: 100px; object-fit: cover"
+      />
+      <div class="media-body" style="margin: 0 auto; text-align: center">
+        <h2 class="account-heading">{{ current_user.username }}</h2>
+        <p class="text-secondary">{{ current_user.email }}</p>
+      </div>
+    </div>
+
+    <p>Last Seen: {{ current_user.last_seen }}</p>
+
+    <form method="POST" enctype="multipart/form-data" class="mb-4">
+      {{ update_account_form.hidden_tag() }}
+      <fieldset class="form-group">
+        <legend class="border-bottom mb-4">Update Account</legend>
+        <div class="form-group">
+          {{ update_account_form.username.label(class="form-control-label") }}
+          {{ update_account_form.username(class="form-control form-control-lg", value=current_user.username) }}
+        </div>
+        <div class="form-group">
+          {{ update_account_form.email.label(class="form-control-label") }} {{
+            update_account_form.email(class="form-control form-control-lg", value=current_user.email) }}
+        </div>
+        <div class="form-group">
+          {{ update_account_form.picture.label(class="form-control-label") }} {{
+            update_account_form.picture(class="form-control-file", ) }}
+        </div>
+        <div class="form-group">
+          {{ update_account_form.about_me.label(class="form-control-label") }} {{
+          update_account_form.about_me(class="form-control", value=current_user.about_me) }}
+        </div>
+      </fieldset>
+      <div class="form-group">
+        {{ update_account_form.submit(class="btn btn-outline-info") }}
+      </div>
+    </form>
+
+    <form method="POST">
+      {{ change_password_form.hidden_tag() }}
+      <fieldset class="form-group">
+          <legend class="border-bottom mb-4">Change Password</legend>
+          <div class="form-group">
+              {{ change_password_form.old_password.label(class="form-control-label") }}
+              {{ change_password_form.old_password(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group">
+              {{ change_password_form.new_password.label(class="form-control-label") }}
+              {{ change_password_form.new_password(class="form-control form-control-lg") }}
+          </div>
+          <div class="form-group">
+              {{ change_password_form.confirm_new_password.label(class="form-control-label") }}
+              {{ change_password_form.confirm_new_password(class="form-control form-control-lg") }}
+          </div>
+      </fieldset>
+      <div class="form-group">
+          {{ change_password_form.submit(class="btn btn-outline-info") }}
+      </div>
+  </form>
+  </div>
+</div>
+{% endblock %}

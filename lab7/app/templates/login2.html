@@ -1,0 +1,30 @@
+{% block head %}
+<title>{{ title }}</title>
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+/>
+{% endblock %} {% extends "base.html" %} {% import 'macros.html' as macros %} {%
+block content %}
+<div class="skills-section">
+  <div class="container">
+    <h2>Login</h2>
+    <form method="POST">
+      {{ form.hidden_tag() }}
+      <div class="form-group">
+        {{ form.email.label(class="form-control-label") }} {{
+        form.email(class="form-control", placeholder="Email") }}
+      </div>
+      <div class="form-group">
+        {{ form.password.label(class="form-control-label") }} {{
+        form.password(class="form-control", placeholder="Password") }}
+      </div>
+      <div class="form-group form-check">
+        {{ form.remember(class="form-check-input") }} {{
+        form.remember.label(class="form-check-label") }}
+      </div>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% set menu = {"Домашня": url_for("home"), "Про мене": url_for("about"),"Логін":
+url_for("login"), "Завдання": url_for("todo"), "Login": url_for("login2"),
+"Register": url_for("register"), "Users": url_for("users") } %}
+
+<nav
+  class="navbar navbar-expand-lg navbar-light centered-navbar"
+  style="background-color: #6c757d"
+>
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">TADEY</a>
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarColor02"
+      aria-controls="navbarColor02"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor02">
+      <ul class="navbar-nav me-auto">
+        {% for name, url in menu.items() %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url }}">{{ name | upper }}</a>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,116 @@
+{% extends "base.html" %} {% block title %}Info{% endblock %} {% block body %}
+<div class="container">
+  {% if 'username' in session %}
+  <h1 class="text-center mb-4">
+    Вітаю, {{ session['username'] }}<br />Ви успішно авторизувалися!
+  </h1>
+
+  {% if session['cookies'] %}
+  <h3 class="text-center mb-3">Збережені кукі:</h3>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Ключ</th>
+        <th scope="col">Значення</th>
+        <th scope="col">Термін дії</th>
+        <th scope="col">Час створення</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for key, cookie in session['cookies'].items() %}
+      <tr>
+        <td>{{ key }}</td>
+        <td>{{ cookie.value }}</td>
+        <td>{{ cookie.expires }}</td>
+        <td>{{ cookie.created }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+  <form
+    method="post"
+    action="{{ url_for('cookie.change_password') }}"
+    class="text-center mt-4"
+  >
+    <h3 class="text-center mt-4">Змінити пароль:</h3>
+    <div class="mb-3">
+      <label for="new_password" class="form-label">Новий пароль:</label>
+      <input
+        type="password"
+        class="form-control"
+        id="new_password"
+        name="new_password"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Змінити пароль</button>
+  </form>
+
+  <form method="post" action="{{ url_for('cookie.add_cookie') }}">
+    <h3 class="text-center mt-4">Додати кукі:</h3>
+    <div class="mb-3">
+      <label for="key" class="form-label">Ключ:</label>
+      <input type="text" class="form-control" id="key" name="key" required />
+    </div>
+    <div class="mb-3">
+      <label for="value" class="form-label">Значення:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="value"
+        name="value"
+        required
+      />
+    </div>
+    <div class="mb-3">
+      <label for="expiry" class="form-label">Термін дії (в секундах):</label>
+      <input
+        type="number"
+        class="form-control"
+        id="expiry"
+        name="expiry"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-primary">Додати кукі</button>
+  </form>
+
+  <form method="post" action="{{ url_for('cookie.remove_cookie') }}">
+    <h3 class="text-center mt-4">Видалити кукі за ключем:</h3>
+    <div class="mb-3">
+      <label for="key_to_remove" class="form-label">Ключ:</label>
+      <input
+        type="text"
+        class="form-control"
+        id="key_to_remove"
+        name="key_to_remove"
+        required
+      />
+    </div>
+    <button type="submit" class="btn btn-danger">Видалити кукі</button>
+  </form>
+
+  <form
+    method="post"
+    action="{{ url_for('cookie.remove_all_cookies') }}"
+    class="text-center mt-4"
+  >
+    <h3 class="text-center mt-4">Видалити всі кукі:</h3>
+    <button type="submit" class="btn btn-danger">Видалити всі кукі</button>
+  </form>
+
+  <form method="post" action="{{ url_for('cookie.logout') }}" class="text-center mt-4">
+    <h3 class="text-center mt-4">Вийти з системи:</h3>
+    <button type="submit" class="btn btn-secondary">Вийти</button>
+  </form>
+
+  {% else %}
+  <h1 class="text-center mb-4">Доступ заборонено!</h1>
+  <p class="text-center">Будь ласка, увійдіть в систему.</p>
+  <a href="{{ url_for('cookie.login') }}" class="btn btn-primary d-block mx-auto mt-3"
+    >Увійти</a
+  >
+  {% endif %}
+</div>
+{% endblock %}

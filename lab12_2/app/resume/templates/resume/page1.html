@@ -1,0 +1,28 @@
+{% extends 'base.html' %} {% block title %}Сторінка 1{% endblock %} {% block
+body %}
+<div class="container">
+  <h2>Сторінка 1</h2>
+  <p>
+    Привіт! Мене звати Пилячик Тадей, я народився в місті Івано-Франківськ, тут
+    живу, та навчаюсь, а також працюю.
+  </p>
+  <table>
+    <tr>
+      <th>Дата народження</th>
+      <th>Рік</th>
+    </tr>
+    <tr>
+      <td>8 січня</td>
+      <td>2004</td>
+    </tr>
+  </table>
+  <div style="text-align: center">
+    <img
+      src="{{ url_for('static', filename='images/image1.jpg') }}"
+      alt="Зображення 1"
+      style="width: 600px; height: auto"
+    />
+    <h4><a href="">Повернутися до біографії</a></h4>
+  </div>
+</div>
+{% endblock %}

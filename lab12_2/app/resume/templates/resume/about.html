@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %} About{% endblock %}
+
+{% block css %}
+    {{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/custom.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Моя біографія</h1>
+
+     <ul class="simple-list">
+        <li>
+            <a href="{{ url_for('resume.home') }}">Головна</a>
+        </li>
+        <li>
+            <a href="{{ url_for('resume.page1') }}">Сторінка 1</a>
+        </li>
+        <li>
+            <a href="{{ url_for('resume.page2') }}">Сторінка 2</a>
+        </li>
+        <li>
+            <a href="{{ url_for('resume.page3') }}">Сторінка 3</a>
+        </li>
+    </ul>
+    <img src="/static/images/image5.jpg" style="width: 600px; height: auto;">
+</div>
+{% endblock %}

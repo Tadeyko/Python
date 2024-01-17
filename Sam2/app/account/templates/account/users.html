@@ -1,0 +1,30 @@
+{% block head %}
+<title>{{ skill }}</title>
+
+{% endblock %} {% extends "base.html" %} {% block content %}
+<div class="container">
+  <h2>Users</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Номер</th>
+        <th scope="col">Ім'я</th>
+        <th scope="col">Почта</th>
+        <th scope="col">Файл</th>
+        <th scope="col">Пароль</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in all_users %}
+      <tr>
+        <th scope="row">{{ user.id }}</th>
+        <td>{{ user.username }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.image_file }}</td>
+        <td>{{ user.password }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+{% endblock %}

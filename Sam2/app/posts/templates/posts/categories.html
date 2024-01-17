@@ -1,0 +1,25 @@
+{% block head %}
+<title>Категорії</title>
+<link
+  href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+  rel="stylesheet"
+/>
+{% endblock %} {% extends "base.html" %} {% block content %}
+<div class="container py-5">
+  <h2 class="mb-4">Категорії</h2>
+  <a href="{{ url_for('posts.create_category') }}" class="btn btn-primary mb-4"
+    >Створити категорію</a
+  >
+  {% if categories_list|length > 0 %} {% for category in categories_list %}
+  <a href="{{ url_for('posts.category', id=category.id) }}">
+    <div class="card mb-4">
+      <div class="card-body">
+        <h5 class="card-title">{{ category.name }}</h5>
+      </div>
+    </div>
+  </a>
+  {% endfor %} {% else %}
+  <p>Немає категорій.</p>
+  {% endif %}
+</div>
+{% endblock %}
